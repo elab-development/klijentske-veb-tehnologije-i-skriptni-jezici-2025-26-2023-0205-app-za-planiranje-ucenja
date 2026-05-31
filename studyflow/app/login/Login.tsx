@@ -20,7 +20,9 @@ export function Login(){
                     <h1>StudyFlow</h1>
                     <p>Enter your credentials to access your academic portal.</p>
                 </div>
+
                 <LoginForm></LoginForm>
+                
                 <div className="infoPages">
                     <p>Privacy Policy</p>
                     <p>•</p>
