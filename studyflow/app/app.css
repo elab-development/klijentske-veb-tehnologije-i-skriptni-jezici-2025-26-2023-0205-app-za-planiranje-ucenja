@@ -10,6 +10,8 @@
   --text-light: #45474C;
   --text-light2: #8590A6;
   --input-color: #F7F9FB;
+  --background-dark: #F2F4F6;
+  --dark-blue-bg: #1D293B;
 }
 *{
   box-sizing: border-box;
@@ -39,7 +41,7 @@ body{
   bottom: 0;
 }
 
-.loginMain header{
+.loginMain, .registerMain header{
   position: fixed;
   height: 64px;
   width: 100%;
@@ -54,7 +56,7 @@ body{
   z-index: 100;
 }
 
-.loginMain header h1{
+.loginMain,.registerMain header h1{
   color: var(--teriary);
   font-weight: bold;
   font-size: 20px;
@@ -187,4 +189,129 @@ body{
 .registerMain .loginForm{
   width: 500px;
   padding-block: 30px;
+}
+
+.registerShowcase{
+  padding: 96px 72px 48px;
+}
+
+.registerShowcaseGrid{
+  width: 600px;
+  min-width: 600px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.registerFeatureCard,
+.registerStatsCard,
+.registerQuoteCard,
+.registerJoinCard{
+  background-color: var(--neutral);
+  border: 1px solid var(--border-color-dark);
+}
+
+.registerFeatureCard{
+  padding: 24px;
+  border-radius: 16px 0 0 0;
+  overflow: hidden;
+  grid-column: span 8 / span 8;
+  grid-row: span 6 / span 6;
+}
+
+.registerIconBox{
+  width: 48px;
+  height: 48px;
+  background-color: #DCE7FF;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.registerFeatureTitle{
+  color: var(--text-light);
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.registerFeatureText{
+  color: var(--text-light);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.registerFeatureCard img{
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.registerStatsCard{
+  border-radius: 0 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 20px;
+  grid-column: span 4 / span 4;
+  grid-row: span 4 / span 4;
+  grid-column-start: 9;
+}
+
+.registerStatsCard h2{
+  color: var(--teriary);
+  font-size: 52px;
+  line-height: 1;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.registerStatsCard p{
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.registerQuoteCard{
+  border-radius: 0 0 0 16px;
+  padding: 76px 36px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  grid-column: span 8 / span 8;
+  grid-row: span 6 / span 6;
+  grid-row-start: 7;
+}
+
+.registerQuoteCard p{
+  color: var(--text-light);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.45;
+}
+.registerQuoteCard svg{
+  flex-shrink: 0;
+}
+
+.registerJoinCard{
+  background-color: var(--dark-blue-bg);
+  border-color: var(--dark-blue-bg);
+  border-radius: 0 0 16px 0;
+  padding: 38px 24px;
+  display: flex;
+  align-items: flex-end;
+   grid-column: span 4 / span 4;
+    grid-row: span 8 / span 8;
+    grid-column-start: 9;
+    grid-row-start: 5;
+}
+
+.registerJoinCard p{
+  color: var(--text-light2);
+  font-size: 16px;
+  line-height: 1.45;
 }
