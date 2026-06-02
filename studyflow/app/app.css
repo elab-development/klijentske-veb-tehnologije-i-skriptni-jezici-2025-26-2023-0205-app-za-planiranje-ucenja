@@ -41,7 +41,7 @@ body{
   bottom: 0;
 }
 
-.loginMain, .registerMain header{
+.loginMain header,.registerMain header{
   position: fixed;
   height: 64px;
   width: 100%;
@@ -56,13 +56,13 @@ body{
   z-index: 100;
 }
 
-.loginMain,.registerMain header h1{
+.loginMain header h1,.registerMain header h1{
   color: var(--teriary);
   font-weight: bold;
   font-size: 20px;
 }
 
-.loginMain header p{
+.loginMain header p,.registerMain header p{
   color: var(--text-light);
   font-size: 16px;
 }
@@ -135,6 +135,8 @@ body{
   outline: none;
   border: none;
   box-shadow: none;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 

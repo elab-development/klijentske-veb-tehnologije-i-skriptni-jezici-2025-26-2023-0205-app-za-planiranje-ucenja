@@ -11,7 +11,7 @@ export function Register(){
                 <h1>StudyFlow</h1>
                 <div className="flex gap-3.75">
                     <p>Already have an account?</p>
-                    <Link to="/register" className="">Sign in</Link>
+                    <Link to="/login" className="">Sign in</Link>
                 </div>
             </header>
             <div className="registerShowcase bg-(--background-dark) border-r border-(--border-color-dark)">
