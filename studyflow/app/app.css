@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root{
   --teriary: #0F172A;
@@ -20,9 +19,10 @@
   padding: 0;
 }
 
-body{
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
+
+body {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-optical-sizing: none;
   font-style: normal;
 }
 
@@ -377,19 +377,23 @@ body{
   align-items: center;
   justify-content: space-between;
   padding-inline: 10px;
+   font-family: inherit;
 }
+
 
 .workHeader a{
   color: var(--link-inactive);
   font-size: 14px;
 }
+.workHeader a.activeLink {
+  color: var(--teriary);
+  text-decoration: underline;
+}
+
+
 .workHeader img{
   width: 30px;
   aspect-ratio: 1/1;
   border-radius: 100%;
 }
 
-.workHeader a.activeLink {
-  color: var(--teriary);
-  text-decoration: underline;
-}
