@@ -34,25 +34,31 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  gap: 10px;
   background-color: var(--work-page-bg);
 }
 
 .notFoundPage img {
   width: 650px;
-  margin-bottom: 24px;
 }
 
 .notFoundPage h1 {
   font-size: 32px;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 8px;
 }
 
 .notFoundPage p {
   font-size: 16px;
   color: var(--text-light);
+}
+
+.notFoundSvg svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--border-color-dark);
+  border-radius: 30px;
 }
 
 /* -- LOGIN -- */
