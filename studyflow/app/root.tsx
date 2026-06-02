@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import {Header} from "./commonComponents/Header"
+
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -33,6 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Header/>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -49,8 +52,10 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
+    let isNotFound = false;
 
   if (isRouteErrorResponse(error)) {
+      isNotFound = error.status === 404;
     message = error.status === 404 ? "404" : "Error";
     details =
       error.status === 404
@@ -60,6 +65,17 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     details = error.message;
     stack = error.stack;
   }
+
+  if (isNotFound) {
+  return (
+    <main className="notFoundPage">
+      <h1>Page not found</h1>
+      
+      <img src="/images/notFound.svg" alt="Not found" />
+      <p>The page you are looking for does not exist or has been moved.</p>
+    </main>
+  );
+}
 
   return (
     <main className="pt-16 p-4 container mx-auto">
