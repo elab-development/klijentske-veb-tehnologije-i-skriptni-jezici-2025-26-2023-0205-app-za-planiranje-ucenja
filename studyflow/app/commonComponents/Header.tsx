@@ -20,13 +20,11 @@ export function Header(){
                     <NavLink to="/study-plan" className={({ isActive }) => isActive ? "activeLink" : ""}>
                     Study Plan
                     </NavLink>
-                </div>
-                <div className="flex items-center gap-2">
-                    <NavLink to="/profile" className={({ isActive }) => isActive ? "activeLink" : ""}>
-                        Profile Name
-                    </NavLink>
+                </div>     
+                <NavLink to="/profile" className={({ isActive }) =>`flex items-center gap-2 ${isActive ? "activeLink" : ""}`}>
+                    Profile Name
                     <img src="/images/profile.png" alt="" />
-                </div>
+                </NavLink>
             </header>
     )
 }
