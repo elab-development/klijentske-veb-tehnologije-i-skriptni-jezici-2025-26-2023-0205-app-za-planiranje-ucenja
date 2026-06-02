@@ -21,7 +21,7 @@ export function Header(){
                     Study Plan
                     </NavLink>
                 </div>
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-2">
                     <NavLink to="/profile" className={({ isActive }) => isActive ? "activeLink" : ""}>
                         Profile Name
                     </NavLink>
