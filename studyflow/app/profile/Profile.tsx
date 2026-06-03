@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { calendar, quote, uni } from "~/constants";
 
 export function Profile(){
@@ -10,13 +9,13 @@ export function Profile(){
                         <img src="/images/profile.png" alt="" />
                         <div>
                             <p>John Doe</p>
-                            <div className="flex h-[50px] bg-amber-50">
-                                <div className="flex flex-col items-center gap-1  h-[50px] justify-between">
+                            <div className="profileDetails">
+                                <div className="profileDetailItem">
                                     {uni}
-                                    {calendar}
-                                </div>
-                                <div className="flex flex-col items-center gap-1 h-[50px] justify-between">                         
                                     <p className="text-(--text-light)">Univerzitet u Beogradu</p>
+                                </div>
+                                <div className="profileDetailItem">
+                                    {calendar}
                                     <p className="text-(--text-light) text-[14px] font-medium">Joined Sept 2021</p>
                                 </div>
                             </div>

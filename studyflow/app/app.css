@@ -460,6 +460,25 @@ footer>div{
   border: 3px solid var(--border-color);
 }
 
+.profileDetails{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.profileDetailItem{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profileDetailItem svg{
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
 .personalBio{
   width: calc(100% - 40px);
   background-color: #D5E3FD;
