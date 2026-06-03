@@ -1,4 +1,4 @@
-import { calendar, quote, uni } from "~/constants";
+import { calendar, edit, quote, signOut, uni } from "~/constants";
 
 export function Profile(){
     return(
@@ -6,7 +6,12 @@ export function Profile(){
             <div className="profileHolder">
                 <div className="profileInfo">
                     <div className="flex items-center gap-5">
-                        <img src="/images/profile.png" alt="" />
+                        <div className="profileImgHolder">
+                            <img src="/images/profile.png" alt="" />
+                            <div>
+                                {edit}
+                            </div>
+                        </div>
                         <div>
                             <p>John Doe</p>
                             <div className="profileDetails">
@@ -20,6 +25,12 @@ export function Profile(){
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="h-full flex items-start">
+                        <button className="signOutBtn">
+                            {signOut}
+                            Sign Out
+                        </button>
                     </div>
                 </div>
                 <div className="personalBio">
