@@ -480,7 +480,7 @@ footer>div{
 }
 
 .personalBio{
-  width: calc(100% - 40px);
+  width: 100%;
   background-color: #D5E3FD;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
