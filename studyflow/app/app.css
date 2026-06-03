@@ -362,11 +362,12 @@ body {
 /* -- WORK PAGES -- */
 
 .workPageMain{
+  padding-top: 85px;
   flex-grow: 1;
   width: 100vw;
   background-color: var(--work-page-bg);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 /* -- HEADER -- */
@@ -382,7 +383,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding-inline: 10px;
-   font-family: inherit;
+  font-family: inherit;
 }
 
 .workHeader a{
@@ -431,4 +432,69 @@ footer>div{
 .footerLink:hover{
   color: var(--teriary);
   text-decoration: underline;
+}
+
+
+/* -- PROFILE -- */
+
+.profileHolder{
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profileInfo{
+    height: 178px;
+    width: 100%;
+    background-color: var(--neutral);
+    border: 1px solid var(--border-color-dark);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.profileInfo img{
+  border-radius: 10px;
+  border: 3px solid var(--border-color);
+}
+
+.personalBio{
+  width: calc(100% - 40px);
+  background-color: #D5E3FD;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 24px;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tags p{
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #e7f0ff;
+  padding-inline: 8px;
+  padding-block: 4px;
+  border-radius: 4px;
+}
+
+.bioText{
+  font-style: italic;
+  color: var(--text-light);
+}
+
+.personalBio svg path{
+  fill: var(--teriary);
+  fill-opacity: 0.9;
+}
+
+.personalBio svg{
+  width: 17px;
+  height: 17px;
+}
+
+.personalBio h1{
+  font-size: 16px
 }
