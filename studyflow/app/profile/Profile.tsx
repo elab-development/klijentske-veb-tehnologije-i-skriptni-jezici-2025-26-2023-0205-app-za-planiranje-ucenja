@@ -1,4 +1,6 @@
 import { calendar, edit, quote, signOut, uni } from "~/constants";
+import { Stats } from "./components/Stats";
+import { Settings } from "./components/Settings";
 
 export function Profile(){
     return(
@@ -8,9 +10,9 @@ export function Profile(){
                     <div className="flex items-center gap-5">
                         <div className="profileImgHolder">
                             <img src="/images/profile.png" alt="" />
-                            <div>
+                            <button>
                                 {edit}
-                            </div>
+                            </button>
                         </div>
                         <div>
                             <p>John Doe</p>
@@ -33,7 +35,7 @@ export function Profile(){
                         </button>
                     </div>
                 </div>
-                <div className="flex items-center justify-center px-5!">
+                <div className="flex flex-col items-center justify-center px-5! gap-5">
                     <div className="personalBio">
                         <div className="flex gap-2.5 items-center justify-left">
                             {quote}
@@ -48,6 +50,10 @@ export function Profile(){
                             <p>#Ethics</p>
                         </div>
                     </div>
+
+                    <Stats/>
+
+                    <Settings/>
                 </div>
             </div>
         </main>

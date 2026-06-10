@@ -364,11 +364,11 @@ body {
 .workPageMain{
   padding-top: 85px;
   flex-grow: 1;
-  width: 100vw;
   background-color: var(--work-page-bg);
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  padding-bottom: 20px;
 }
 /* -- HEADER -- */
 .workHeader{
@@ -384,6 +384,7 @@ body {
   justify-content: space-between;
   padding-inline: 10px;
   font-family: inherit;
+  z-index: 999;
 }
 
 .workHeader a{
@@ -522,7 +523,7 @@ footer>div{
   position: relative;
 }
 
-.profileImgHolder div{
+.profileImgHolder > button{
   background-color: var(--teriary);
   width: 36px;
   height: 36px;
@@ -534,6 +535,7 @@ footer>div{
   bottom: -10px;
   right: -10px;
   border: 2px solid var(--border-color);
+  cursor: pointer;
 }
 
 .signOutBtn{
@@ -547,4 +549,116 @@ footer>div{
   border-radius: 30px;
   justify-content: center;
   size: 16px;
+  cursor: pointer;
+}
+
+
+
+
+.stats{
+  background-color: var(--neutral);
+  width: 100%;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color-dark);
+  gap:47px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats h3{
+  font-size: 16px;
+  color: var(--text-light);
+}
+
+.statCardHolder{
+  display: flex;
+  justify-content: space-between;
+}
+
+.statCard{
+  border-left: 4px solid black;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.statCard h1{
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+.statCard p{
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.statCardHolder .statCard:nth-child(1){
+  border-color: var(--teriary);
+}
+.statCardHolder .statCard:nth-child(2){
+  border-color: #10B981;
+}
+.statCardHolder .statCard:nth-child(3){
+  border-color: #F59E0B;
+}
+
+.settingsSectionHeader{
+  display: flex;
+  justify-content: left;
+  gap: 8px;
+  align-items: center;
+  font-weight: bold;
+}
+
+.themeCard{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 45px;
+  padding-block: 12px;
+  border: 2px solid var(--teriary);
+  border-radius: 12px;
+  opacity: 0.5;
+  background-color: var(--input-color);
+  cursor: pointer;
+}
+
+.themeCard.active{
+  opacity: 1;
+}
+
+.themeCard:hover{
+  filter: brightness(0.85);
+}
+
+
+.settingsHolder{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 40px;
+}
+
+.bigSettingButton{
+  background-color: var(--input-color);
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  width: 270px;
+  border: 2px solid var(--teriary);
+  size: 14px;
+  display: flex;
+  align-items:  center;
+  justify-content: space-between;
+  padding-inline: 20px;
+  cursor: pointer;
+}
+
+.bigSettingButton:hover{
+  filter: brightness(0.85);
 }
