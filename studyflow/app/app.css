@@ -68,7 +68,6 @@ body {
 /* -- LOGIN -- */
 
 .loginMain{
-  width: 100vw;
   min-height: 100vh;
   background-color: var(--neutral);
   display: flex;
@@ -215,7 +214,6 @@ body {
 
 /* -- REGISTER -- */
 .registerMain {
-  width: 100vw;
   height: 100vh;
   background-color: var(--neutral);
   display: flex;
@@ -418,6 +416,7 @@ footer
   display: flex;
   justify-content: space-between;
   padding-inline: 100px;
+  z-index: 100;
 }
 
 footer>div{
