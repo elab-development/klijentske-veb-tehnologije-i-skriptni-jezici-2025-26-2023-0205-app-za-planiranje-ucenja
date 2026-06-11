@@ -650,7 +650,7 @@ footer>div{
   padding: 12px;
   border-radius: 8px;
   width: 270px;
-  border: 2px solid var(--teriary);
+  border: 2px solid var(--border-color-dark);
   size: 14px;
   display: flex;
   align-items:  center;
@@ -662,3 +662,127 @@ footer>div{
 .bigSettingButton:hover{
   filter: brightness(0.85);
 }
+
+
+
+ /* -- DASHBOARD -- */
+
+ .dashboardFeaturesHolder
+ {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  padding-inline: 40px;
+  gap: 35px;
+  align-items: center;
+  justify-content: space-between;
+ }
+
+ .dashboardFeature{
+  background-color: var(--neutral);
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--border-color-dark);
+  border-radius: 12px;
+  padding: 24px;
+ }
+
+ .featureHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ }
+
+ .featureHeader p{
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+ }
+
+ .progressFeature{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ }
+
+ .progressCircleHolder{
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 4px auto 0;
+ }
+
+ .progressCircle{
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+ }
+
+ .progressTrack,
+ .progressValue{
+  fill: none;
+  stroke-width: 12px;
+ }
+
+ .progressTrack{
+  stroke: var(--border-color);
+ }
+
+ .progressValue{
+  stroke: var(--teriary);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+ }
+
+ .progressCircleText{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+ }
+
+ .progressCircleText h2{
+  color: var(--teriary);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+ }
+
+ .progressCircleText p{
+  color: var(--link-inactive);
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-top: 8px;
+ }
+
+ .progressStats{
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  color: var(--teriary);
+ }
+
+ .progressStats > div:not(.progressStatsDivider){
+  min-width: 108px;
+ }
+
+ .progressStats p{
+  color: var(--link-inactive);
+  font-size: 14px;
+ }
+
+ .progressStats strong{
+  color: var(--teriary);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+ }
+
+ .progressStatsDivider{
+  width: 1px;
+  height: 42px;
+  background-color: var(--border-color);
+ }
