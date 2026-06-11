@@ -9,6 +9,7 @@ import {
 
 import {Header} from "./commonComponents/Header"
 import {Footer} from "./commonComponents/Footer"
+import { TimerProvider } from "./dashboard/TimerContext";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -47,7 +48,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <TimerProvider>
+      <Outlet />
+    </TimerProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
