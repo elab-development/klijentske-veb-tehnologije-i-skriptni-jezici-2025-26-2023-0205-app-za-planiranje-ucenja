@@ -83,3 +83,10 @@ export const arrowRightBlack =
 <svg xmlns="http://www.w3.org/2000/svg" width="5" height="7" viewBox="0 0 5 7" fill="none">
 <path d="M2.68333 3.5L0 0.816667L0.816667 0L4.31667 3.5L0.816667 7L0 6.18333L2.68333 3.5Z" fill="#191C1E"/>
 </svg>
+
+export const threeDots =
+<svg viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="5" r="1.8" />
+    <circle cx="12" cy="12" r="1.8" />
+    <circle cx="12" cy="19" r="1.8" />
+</svg>
