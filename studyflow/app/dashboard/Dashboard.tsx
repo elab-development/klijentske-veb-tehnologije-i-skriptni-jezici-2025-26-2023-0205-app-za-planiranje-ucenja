@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Timer } from "./components/Timer";
 import { Progress } from "./components/Progress";
+import { Tests } from "./components/Tests";
 
 export function Dashboard(){
     return(
@@ -9,6 +10,7 @@ export function Dashboard(){
                 <Progress/>
                 <Timer/>
             </div>
+            <Tests/>
         </main>
     )
 }

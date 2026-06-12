@@ -364,9 +364,12 @@ body {
   flex-grow: 1;
   background-color: var(--work-page-bg);
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: start;
   padding-bottom: 20px;
+  padding-inline: 40px;
+  gap: 20px;
 }
 /* -- HEADER -- */
 .workHeader{
@@ -671,7 +674,6 @@ footer>div{
   width: 100%;
   height: 350px;
   display: flex;
-  padding-inline: 40px;
   gap: 35px;
   align-items: center;
   justify-content: space-between;
@@ -888,3 +890,26 @@ footer>div{
   cursor: not-allowed;
   opacity: 0.65;
  }
+
+
+.tests{
+  width: 100%;
+}
+
+.testsHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+ .heading1{
+  font-size: 32px;
+ }
+
+ .testsHolder{
+  gap: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+ }
+ 
