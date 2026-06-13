@@ -447,6 +447,7 @@ footer>div{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px
 }
 .profileInfo{
     height: 178px;
@@ -484,7 +485,7 @@ footer>div{
 }
 
 .personalBio{
-  width: 100%;
+  width:calc(100% - 40px);
   background-color: #D5E3FD;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
