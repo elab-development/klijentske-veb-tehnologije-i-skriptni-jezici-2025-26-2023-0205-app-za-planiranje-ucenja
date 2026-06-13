@@ -1,6 +1,77 @@
 
+import { Subject } from "./Subject";
+import { SubjectTable } from "./components/SubjectTable";
+
 export function Subjects(){
     const statuses = ["All", "Passed", "Planned", "Failed"];
+    const subjects = [
+        new Subject({
+            id: "1",
+            user_id: "1",
+            name: "Matematika 2",
+            exam_period: "Summer",
+            exam_year: 2026,
+            grade: 0,
+            espb: 6,
+            status: "Planned",
+            icon: "math",
+        }),
+        new Subject({
+            id: "2",
+            user_id: "1",
+            name: "KETH",
+            exam_period: "Summer",
+            exam_year: 2026,
+            grade: 10,
+            espb: 5,
+            status: "Passed",
+            icon: "tool",
+        }),
+        new Subject({
+            id: "3",
+            user_id: "1",
+            name: "KETH",
+            exam_period: "Summer",
+            exam_year: 2026,
+            grade: 10,
+            espb: 5,
+            status: "Passed",
+            icon: "tool",
+        }),
+        new Subject({
+            id: "4",
+            user_id: "1",
+            name: "KETH",
+            exam_period: "Summer",
+            exam_year: 2026,
+            grade: 10,
+            espb: 5,
+            status: "Passed",
+            icon: "tool",
+        }),
+        new Subject({
+            id: "6",
+            user_id: "1",
+            name: "SPA",
+            exam_period: "Summer",
+            exam_year: 2026,
+            grade: 5,
+            espb: 5,
+            status: "Failed",
+            icon: "screen",
+        }),
+        new Subject({
+            id: "5",
+            user_id: "1",
+            name: "SPA",
+            exam_period: "Summer",
+            exam_year: 2026,
+            grade: 5,
+            espb: 5,
+            status: "Failed",
+            icon: "screen",
+        }),
+    ];
 
     return(
         <main className="workPageMain">
@@ -45,6 +116,8 @@ export function Subjects(){
                         </button>
                     </div>
                 </div>
+
+                <SubjectTable subjects={subjects} showing={5} total={44} />
             </div>
         </main>
     )

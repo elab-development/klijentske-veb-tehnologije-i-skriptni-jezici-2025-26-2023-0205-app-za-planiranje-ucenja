@@ -788,8 +788,215 @@ footer>div{
   transform: translateY(-2px);
 }
 
+.subjectTableCard{
+  width: 100%;
+  background-color: var(--neutral);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.subjectTable{
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.subjectTable th{
+  height: 54px;
+  background-color: var(--sub-neutral);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-light);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 20px;
+  text-align: left;
+  padding-inline: 24px;
+}
+
+.subjectTable th:not(:last-child){
+  border-right: 1px solid var(--border-color);
+}
+
+.subjectTable th:nth-child(1){
+  width: 32%;
+}
+
+.subjectTable th:nth-child(2){
+  width: 25%;
+}
+
+.subjectTable th:nth-child(3){
+  width: 15%;
+}
+
+.subjectTable th:nth-child(4){
+  width: 13%;
+  text-align: center;
+}
+
+.subjectTable th:nth-child(5){
+  width: 15%;
+  text-align: center;
+}
+
+.subjectTable td{
+  height: 76px;
+  color: var(--text-light);
+  font-size: 14px;
+  padding-inline: 24px;
+  vertical-align: middle;
+}
+
+.subjectTable td:nth-child(4),
+.subjectTable td:nth-child(5){
+  text-align: center;
+}
+
+.subjectNameCell{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subjectIconBox{
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: #F1F5F9;
+  color: var(--teriary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
 
+.subjectIconBox svg{
+  width: 16px;
+  height: 16px;
+}
+
+.subjectNameCell strong{
+  display: block;
+  color: var(--teriary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.subjectNameCell span{
+  display: block;
+  color: var(--text-light);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.subjectTableStatus{
+  min-width: 66px;
+  height: 24px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 12px;
+  padding-inline: 12px;
+}
+
+.subjectTableStatusPlanned{
+  background-color: #EEF2F6;
+  color: var(--text-light);
+}
+
+.subjectTableStatusPassed{
+  background-color: #B5F3D5;
+  color: #047857;
+}
+
+.subjectTableStatusFailed{
+  background-color: #FDE7E7;
+  color: #DC2626;
+}
+
+.subjectTable td:nth-child(4) strong{
+  color: var(--teriary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.subjectTable td:nth-child(4) .subjectGradeFailed{
+  color: #DC2626;
+}
+
+.subjectTableActionsButton{
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  color: var(--text-light2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.subjectTableActionsButton svg{
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.subjectTableActionsButton:hover{
+  color: var(--teriary);
+}
+
+.subjectTableFooter{
+  min-height: 54px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--sub-neutral);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 24px;
+}
+
+.subjectTableFooter p{
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.subjectTablePagination{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.subjectTablePageButton{
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.subjectTablePageButton svg{
+  width: 7px;
+  height: 10px;
+}
+
+.subjectTablePageButtonPrev svg{
+  transform: rotate(180deg);
+}
+
+.subjectTablePageButton:hover{
+  color: var(--teriary);
+}
 
  /* -- DASHBOARD -- */
 
