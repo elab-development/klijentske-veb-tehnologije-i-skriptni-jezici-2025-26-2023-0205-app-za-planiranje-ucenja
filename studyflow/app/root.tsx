@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { useLocation } from "react-router";
 
 import {Header} from "./commonComponents/Header"
 import {Footer} from "./commonComponents/Footer"
@@ -37,20 +38,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Header/>
         {children}
         <ScrollRestoration />
         <Scripts />
-        <Footer/>
       </body>
     </html>
   );
 }
 
 export default function App() {
+  const location = useLocation();
+
+  const isAuthPage =
+    location.pathname === "/login" || location.pathname === "/register";
+
   return (
-    <TimerProvider>
+     <TimerProvider>
+      {!isAuthPage && <Header />}
       <Outlet />
+      {!isAuthPage && <Footer />}
     </TimerProvider>
   );
 }
