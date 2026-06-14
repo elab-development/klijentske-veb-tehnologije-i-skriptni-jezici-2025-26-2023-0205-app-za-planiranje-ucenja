@@ -6,9 +6,10 @@ type SubjectTableProps = {
     subjects: Subject[];
     showing: number;
     total: number;
+    onEdit?: (subject: Subject) => void;
 };
 
-export function SubjectTable({ subjects, showing, total }: SubjectTableProps){
+export function SubjectTable({ subjects, showing, total, onEdit }: SubjectTableProps){
     return(
         <div className="subjectTableCard">
             <table className="subjectTable">
@@ -26,6 +27,7 @@ export function SubjectTable({ subjects, showing, total }: SubjectTableProps){
                         <SubjectTableRow
                             subject={subject}
                             key={subject.id}
+                            onEdit={onEdit}
                         />
                     ))}
                 </tbody>

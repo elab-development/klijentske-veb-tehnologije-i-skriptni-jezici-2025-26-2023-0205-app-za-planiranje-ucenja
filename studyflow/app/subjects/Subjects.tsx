@@ -1,82 +1,57 @@
-
+import { useEffect, useState } from "react";
 import { Subject } from "./Subject";
 import { SubjectModal } from "./components/SubjectModal";
 import { SubjectTable } from "./components/SubjectTable";
+import { getSubjects } from "~/api/subjects";
 
 export function Subjects(){
+    const [subjects, setSubjects] = useState<Subject[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    const [page, setPage] = useState(1);
+    const [totalItems, setTotalItems] = useState(0);
+
+    const limit = 5;
+
+    const [modalMode, setModalMode] = useState<"add" | "edit" | null>(null);
+    const [selectedSubject, setSelectedSubject] = useState<Subject | undefined>();
     const statuses = ["All", "Passed", "Planned", "Failed"];
-    const subjects = [
-        new Subject({
-            id: "1",
-            user_id: "1",
-            name: "Matematika 2",
-            exam_period: "Summer",
-            exam_year: 2026,
-            grade: 0,
-            espb: 6,
-            status: "Planned",
-            icon: "math",
-        }),
-        new Subject({
-            id: "2",
-            user_id: "1",
-            name: "KETH",
-            exam_period: "Summer",
-            exam_year: 2026,
-            grade: 10,
-            espb: 5,
-            status: "Passed",
-            icon: "tool",
-        }),
-        new Subject({
-            id: "3",
-            user_id: "1",
-            name: "KETH",
-            exam_period: "Summer",
-            exam_year: 2026,
-            grade: 10,
-            espb: 5,
-            status: "Passed",
-            icon: "tool",
-        }),
-        new Subject({
-            id: "4",
-            user_id: "1",
-            name: "KETH",
-            exam_period: "Summer",
-            exam_year: 2026,
-            grade: 10,
-            espb: 5,
-            status: "Passed",
-            icon: "tool",
-        }),
-        new Subject({
-            id: "6",
-            user_id: "1",
-            name: "SPA",
-            exam_period: "Summer",
-            exam_year: 2026,
-            grade: 5,
-            espb: 5,
-            status: "Failed",
-            icon: "screen",
-        }),
-        new Subject({
-            id: "5",
-            user_id: "1",
-            name: "SPA",
-            exam_period: "Summer",
-            exam_year: 2026,
-            grade: 5,
-            espb: 5,
-            status: "Failed",
-            icon: "screen",
-        }),
-    ];
+    
+    const closeModal = () => {
+        setModalMode(null);
+        setSelectedSubject(undefined);
+    };
+
+    async function loadSubjects() {
+            try {
+            setLoading(true);
+            setError("");
+
+            const response = await getSubjects(page, limit);
+
+            setSubjects(response.data);
+            setTotalItems(response.pagination.totalItems);
+            } catch {
+            setError("Could not load subjects.");
+            } finally {
+            setLoading(false);
+            }
+        }
+
+    useEffect(() => {
+        loadSubjects();
+    }, [page]);
 
     return(
         <main className="workPageMain">
-            <SubjectModal></SubjectModal>
+            {modalMode && (
+                <SubjectModal
+                    mode={modalMode}
+                    subject={selectedSubject}
+                    onClose={closeModal}
+                    onCreated={loadSubjects}
+                />
+            )}
             <div className="contentHolder">
                 <div className="workPageTitleHolder">
                     <p>Subject Status Tracker</p>
@@ -113,13 +88,36 @@ export function Subjects(){
                             <input type="number" defaultValue="2026" />
                         </label>
 
-                        <button className="subjectNewButton" type="button" aria-label="Add new subject">
+                        <button
+                            className="subjectNewButton"
+                            type="button"
+                            aria-label="Add new subject"
+                            onClick={() => setModalMode("add")}
+                        >
                             <span aria-hidden="true">+</span>
                         </button>
                     </div>
                 </div>
 
-                <SubjectTable subjects={subjects} showing={5} total={44} />
+                {error && (
+                    <p className="text-red-500 text-sm font-medium">
+                        {error}
+                    </p>
+                    )}
+
+                    {loading ? (
+                    <p>Loading subjects...</p>
+                    ) : (
+                    <SubjectTable
+                        subjects={subjects}
+                        showing={subjects.length}
+                        total={totalItems}
+                        onEdit={(subject) => {
+                        setSelectedSubject(subject);
+                        setModalMode("edit");
+                        }}
+                    />
+                    )}
             </div>
         </main>
     )

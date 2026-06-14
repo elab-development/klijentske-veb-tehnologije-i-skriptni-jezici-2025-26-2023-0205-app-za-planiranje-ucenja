@@ -3,6 +3,7 @@ import type { Subject } from "../Subject";
 
 type SubjectTableRowProps = {
     subject: Subject;
+    onEdit?: (subject: Subject) => void;
 };
 
 function SubjectRowIcon({ icon }: { icon: string }){
@@ -21,7 +22,7 @@ function SubjectRowIcon({ icon }: { icon: string }){
     );
 }
 
-export function SubjectTableRow({ subject }: SubjectTableRowProps){
+export function SubjectTableRow({ subject, onEdit }: SubjectTableRowProps){
     const gradeContent = subject.status === "Planned" ? "/" : subject.grade;
 
     return(
@@ -49,7 +50,12 @@ export function SubjectTableRow({ subject }: SubjectTableRowProps){
                 </strong>
             </td>
             <td>
-                <button className="subjectTableActionsButton" type="button" aria-label={`Open actions for ${subject.name}`}>
+                <button
+                    className="subjectTableActionsButton"
+                    type="button"
+                    aria-label={`Edit ${subject.name}`}
+                    onClick={() => onEdit?.(subject)}
+                >
                     {threeDots}
                 </button>
             </td>

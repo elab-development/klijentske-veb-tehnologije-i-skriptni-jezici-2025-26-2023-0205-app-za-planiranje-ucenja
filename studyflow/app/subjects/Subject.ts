@@ -7,7 +7,7 @@ type SubjectData = {
     name: string;
     exam_period: ExamPeriod;
     exam_year: number;
-    grade: number;
+    grade: number | null;
     espb: number;
     status: SubjectStatus;
     icon: string;
@@ -19,7 +19,7 @@ export class Subject {
     name: string;
     exam_period: ExamPeriod;
     exam_year: number;
-    grade: number;
+    grade: number | null;
     espb: number;
     status: SubjectStatus;
     icon: string;
