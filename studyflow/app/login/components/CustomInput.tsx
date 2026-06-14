@@ -2,7 +2,7 @@ import type { InputHTMLAttributes, ReactNode } from "react";
 
 type CustomInputProps = {
     label: string;
-    icon: ReactNode;
+    icon?: ReactNode;
     rightText?: string;
     rightHref?: string;
 } & InputHTMLAttributes<HTMLInputElement>;

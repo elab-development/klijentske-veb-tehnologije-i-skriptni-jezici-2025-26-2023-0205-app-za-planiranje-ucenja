@@ -1,5 +1,6 @@
 
 import { Subject } from "./Subject";
+import { SubjectModal } from "./components/SubjectModal";
 import { SubjectTable } from "./components/SubjectTable";
 
 export function Subjects(){
@@ -75,6 +76,7 @@ export function Subjects(){
 
     return(
         <main className="workPageMain">
+            <SubjectModal></SubjectModal>
             <div className="contentHolder">
                 <div className="workPageTitleHolder">
                     <p>Subject Status Tracker</p>

@@ -1433,3 +1433,28 @@ footer>div{
   font-size: 16px;
   color: var(--text-light);
 }
+
+
+.modalHolder{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.39);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subjectModal{
+  width: 450px;
+  height: 500px;
+  background-color: var(--neutral);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 25px 50px -12 rgba(0, 0, 0, 0.25);
+}
