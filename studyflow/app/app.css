@@ -17,19 +17,19 @@
 }
 
 html[data-theme="dark"] {
-  --teriary: #ffffff;
-  --neutral: #111827;
-  --sub-neutral: #1F2937;
-  --border-color: #334155;
-  --border-color-dark: #475569;
-  --text-light: #8b8b8b;
+  --teriary: #F8FAFC;
+  --neutral: #141A23;
+  --sub-neutral: #1B2430;
+  --border-color: #2D3A4A;
+  --border-color-dark: #3A485A;
+  --text-light: #CBD5E1;
   --text-light2: #94A3B8;
-  --input-color: #1E293B;
-  --background-dark: #020617;
-  --dark-blue-bg: #0F172A;
-  --work-page-bg: #020617;
-  --link-inactive: #94A3B8;
-  --bio-bg-color: #475879;
+  --input-color: #202B38;
+  --background-dark: #0B1017;
+  --dark-blue-bg: #111827;
+  --work-page-bg: #0B1017;
+  --link-inactive: #8FA1B8;
+  --bio-bg-color: #1F2A3A;
 }
 
 *{
@@ -1439,7 +1439,7 @@ footer>div{
  .testProgressTrack{
   width: 100%;
   height: 8px;
-  background-color: #E5E7EB;
+  background-color: var(--border-color);
   border-radius: 999px;
   overflow: hidden;
  }
