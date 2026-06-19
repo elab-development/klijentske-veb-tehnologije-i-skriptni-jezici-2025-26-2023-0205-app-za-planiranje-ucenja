@@ -13,7 +13,25 @@
   --dark-blue-bg: #1D293B;
   --work-page-bg: #F7F9FB;
   --link-inactive: #64748B;
+  --bio-bg-color: #D5E3FD;
 }
+
+html[data-theme="dark"] {
+  --teriary: #ffffff;
+  --neutral: #111827;
+  --sub-neutral: #1F2937;
+  --border-color: #334155;
+  --border-color-dark: #475569;
+  --text-light: #8b8b8b;
+  --text-light2: #94A3B8;
+  --input-color: #1E293B;
+  --background-dark: #020617;
+  --dark-blue-bg: #0F172A;
+  --work-page-bg: #020617;
+  --link-inactive: #94A3B8;
+  --bio-bg-color: #475879;
+}
+
 *{
   box-sizing: border-box;
   padding: 0;
@@ -49,7 +67,7 @@ body {
 .notFoundPage h1 {
   font-size: 32px;
   font-weight: 700;
-  color: var(--text);
+  color: var(--teriary);
 }
 
 .notFoundPage p {
@@ -73,6 +91,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.loginMain,.registerMain a{
+  color: var(--text-light2);
 }
 
 .loginBackgroundImage{
@@ -155,6 +176,7 @@ body {
 }
 .formInputAlternative{
   font-size: 16px;
+  color: var(--text-light2);
 }
 
 .customInput{
@@ -252,6 +274,9 @@ body {
 .registerJoinCard{
   background-color: var(--neutral);
   border: 1px solid var(--border-color-dark);
+}
+.registerStatsCard{
+  color: var(--text-light);
 }
 
 .registerFeatureCard{
@@ -409,6 +434,9 @@ body {
   border-radius: 100%;
   border: 2px solid var(--border-color);
 }
+.workHeader p {
+  color: var(--teriary);
+}
 
 /* -- FOOTER -- */
 footer
@@ -486,13 +514,17 @@ footer>div{
 
 .personalBio{
   width:calc(100% - 40px);
-  background-color: #D5E3FD;
+  background-color: var(--bio-bg-color);
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   padding: 24px;
   gap: 15px;
   display: flex;
   flex-direction: column;
+}
+
+.fullName{
+  color: var(--teriary);
 }
 
 .tags p{
@@ -520,7 +552,8 @@ footer>div{
 }
 
 .personalBio h1{
-  font-size: 16px
+  font-size: 16px;
+  color: var(--teriary);
 }
 
 .profileImgHolder{
@@ -582,6 +615,7 @@ footer>div{
 .statCardHolder{
   display: flex;
   justify-content: space-between;
+  color: var(--teriary);
 }
 
 .statCard{
@@ -620,6 +654,7 @@ footer>div{
   gap: 8px;
   align-items: center;
   font-weight: bold;
+  color: var(--teriary);
 }
 
 .themeCard{
@@ -634,6 +669,7 @@ footer>div{
   opacity: 0.5;
   background-color: var(--input-color);
   cursor: pointer;
+  color: var(--teriary);
 }
 
 .themeCard.active{
@@ -665,6 +701,7 @@ footer>div{
   justify-content: space-between;
   padding-inline: 20px;
   cursor: pointer;
+  color: var(--teriary);
 }
 
 .bigSettingButton:hover{
@@ -1030,6 +1067,7 @@ footer>div{
   font-size: 24px;
   font-weight: 500;
   line-height: 24px;
+  color: var(--teriary);
  }
 
  .progressFeature{
@@ -1272,6 +1310,7 @@ footer>div{
 
  .heading1{
   font-size: 32px;
+  color: var(--teriary);
  }
 
  .testsHolder{
@@ -1427,6 +1466,7 @@ footer>div{
 .workPageTitleHolder p:nth-child(1){
   font-size: 40px;
   font-weight: bold;
+  color: var(--teriary);
 }
 
 .workPageTitleHolder p:nth-child(2){
@@ -1737,3 +1777,27 @@ footer>div{
 .subjectModalPrimaryButton:hover{
   filter: brightness(1.08);
 }
+
+
+.themeCard svg path,
+.settingsSectionHeader svg path,
+.bigSettingButton svg path,
+.profileDetailItem svg path,
+.subjectTableActionsButton svg path,
+.subjectTablePageButton svg path,
+.subjectModalCloseButton svg path,
+.subjectModalIconPreview svg path,
+.profileImgHolder svg path,
+.signOutBtn svg path,
+.testScrollButton svg path{
+  fill: currentColor;
+}
+.profileDetailItem {
+  color: var(--text-light);
+}
+
+.profileImgHolder{
+  color: var(--neutral);
+}
+
+

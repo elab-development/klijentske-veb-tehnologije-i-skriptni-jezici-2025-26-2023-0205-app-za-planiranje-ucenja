@@ -4,7 +4,7 @@ export function Footer(){
     return(
         <footer>
             <div className="flex items-center ">
-                <p className="size-4.5">StudyFlow</p>
+                <p className="size-4.5 text-(--teriary)">StudyFlow</p>
             </div>
             <div className="flex flex-col justify-end items-center pb-2!">
                 <p className="text-(--link-inactive) text-[13px]">© 2026 StudyFlow. Empowering calm productivity.</p>

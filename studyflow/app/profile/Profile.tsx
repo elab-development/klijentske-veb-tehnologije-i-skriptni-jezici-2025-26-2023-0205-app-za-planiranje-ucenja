@@ -49,7 +49,7 @@ export function Profile() {
                                 </button>
                             </div>
                             <div>
-                                <p>{user.full_name}</p>
+                                <p className="fullName">{user.full_name}</p>
                                 <div className="profileDetails">
                                     <div className="profileDetailItem">
                                         {uni}

@@ -1,6 +1,23 @@
-import { arrowRight, arrowRightBlack, download, moon, security, sun, theme } from "~/constants";
+import { useEffect, useState } from "react";
+import { arrowRightBlack, download, moon, security, sun, theme } from "~/constants";
 
 export function Settings(){
+    const [selectedTheme, setSelectedTheme] = useState<"light" | "dark">("light");
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+        const initialTheme = savedTheme ?? "light";
+
+        setSelectedTheme(initialTheme);
+        document.documentElement.setAttribute("data-theme", initialTheme);
+    }, []);
+
+    function changeTheme(theme: "light" | "dark") {
+        setSelectedTheme(theme);
+        localStorage.setItem("theme", theme);
+        document.documentElement.setAttribute("data-theme", theme);
+    }
+
     return(
         <div className="stats">
             <h3>
@@ -13,13 +30,21 @@ export function Settings(){
                         <p>Appearance</p>
                     </div>
                     <div className="flex gap-5">
-                        <button className="themeCard active">
+                        <button
+                            className={`themeCard ${selectedTheme === "light" ? "active" : ""}`}
+                            type="button"
+                            onClick={() => changeTheme("light")}
+                        >
                             {sun}
                             Light
                         </button>
-                        <button className="themeCard">
+                        <button
+                            className={`themeCard ${selectedTheme === "dark" ? "active" : ""}`}
+                            type="button"
+                            onClick={() => changeTheme("dark")}
+                        >
                             {moon}
-                            Light
+                            Dark
                         </button>
                     </div>                 
                 </div>
