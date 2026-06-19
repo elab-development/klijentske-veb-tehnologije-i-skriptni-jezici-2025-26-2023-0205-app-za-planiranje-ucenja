@@ -10,6 +10,7 @@ export function Subjects(){
     const [error, setError] = useState("");
     const [page, setPage] = useState(1);
     const [totalItems, setTotalItems] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
 
     const limit = 5;
 
@@ -31,6 +32,7 @@ export function Subjects(){
 
             setSubjects(response.data);
             setTotalItems(response.pagination.totalItems);
+            setTotalPages(response.pagination.totalPages);
             } catch {
             setError("Could not load subjects.");
             } finally {
@@ -111,6 +113,10 @@ export function Subjects(){
                         showing={subjects.length}
                         total={totalItems}
                         loading={loading}
+                        page={page}
+                        totalPages={totalPages}
+                        onPreviousPage={() => setPage((currentPage) => Math.max(currentPage - 1, 1))}
+                        onNextPage={() => setPage((currentPage) => Math.min(currentPage + 1, totalPages))}
                         onEdit={(subject) => {
                             setSelectedSubject(subject);
                             setModalMode("edit");
