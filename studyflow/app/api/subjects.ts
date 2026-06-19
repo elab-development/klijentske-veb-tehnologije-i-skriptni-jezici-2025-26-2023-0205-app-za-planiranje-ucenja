@@ -1,5 +1,5 @@
 import { apiRequest } from "./client";
-import type { ExamPeriod, Subject, SubjectStatus } from "~/subjects/Subject";
+import type { ExamPeriod, Subject, SubjectStatus } from "~/models/Subject";
 
 export type SubjectsResponse = {
   data: Subject[];
@@ -36,5 +36,11 @@ export function updateSubject(subjectId: string, data: CreateSubjectPayload) {
   return apiRequest<Subject>(`/subjects/${subjectId}`, {
     method: "PUT",
     body: JSON.stringify(data),
+  });
+}
+
+export function deleteSubject(subjectId: string) {
+  return apiRequest<void>(`/subjects/${subjectId}`, {
+    method: "DELETE",
   });
 }

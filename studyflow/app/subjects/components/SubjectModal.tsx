@@ -1,7 +1,7 @@
 import { art, math, terminal } from "~/constants";
-import type { Subject, SubjectStatus } from "../Subject";
+import type { Subject, SubjectStatus } from "../../models/Subject";
 import { useState } from "react";
-import { createSubject, updateSubject } from "~/api/subjects";
+import { createSubject, updateSubject,deleteSubject } from "~/api/subjects";
 
 type SubjectModalMode = "add" | "edit";
 
@@ -86,6 +86,27 @@ export function SubjectModal({ mode, subject, onClose, onCreated }: SubjectModal
                     ? "Could not update subject."
                     : "Could not create subject."
             );
+        }
+    }
+
+    async function handleDelete() {
+        if (!subject) {
+            return;
+        }
+
+        const confirmed = window.confirm("Are you sure you want to delete this subject?");
+
+        if (!confirmed) {
+            return;
+        }
+
+        try {
+            await deleteSubject(subject.id);
+
+            onCreated?.();
+            onClose();
+        } catch {
+            setError("Could not delete subject.");
         }
     }
 
@@ -192,12 +213,23 @@ export function SubjectModal({ mode, subject, onClose, onCreated }: SubjectModal
                     )}
 
                     <div className="subjectModalFooter">
-                        <button className="subjectModalCancelButton" type="button" onClick={onClose}>
+                        {isEditMode && (
+                            <button
+                            className="subjectModalCancelButton bg-[#FFD2D0]! text-[#A11313]!"
+                            type="button"
+                            onClick={handleDelete}
+                            >
+                            Delete
+                            </button>
+                        )}
+                        <div className="flex gap-3">
+                            <button className="subjectModalCancelButton" type="button" onClick={onClose}>
                             Cancel
-                        </button>
-                        <button className="subjectModalPrimaryButton" type="submit">
-                            {primaryLabel}
-                        </button>
+                            </button>
+                            <button className="subjectModalPrimaryButton" type="submit">
+                                {primaryLabel}
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

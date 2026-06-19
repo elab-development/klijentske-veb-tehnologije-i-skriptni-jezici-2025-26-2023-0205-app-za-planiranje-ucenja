@@ -1,5 +1,5 @@
 import { art, math, terminal, threeDots } from "~/constants";
-import type { Subject } from "../Subject";
+import type { Subject } from "../../models/Subject";
 
 type SubjectTableRowProps = {
     subject: Subject;

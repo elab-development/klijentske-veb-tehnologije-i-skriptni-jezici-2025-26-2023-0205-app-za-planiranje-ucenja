@@ -10,12 +10,9 @@ export class ApiError extends Error {
   }
 }
 
-export async function apiRequest<T>(
-  path: string,
-  options: RequestInit = {}
-): Promise<T> {
+export async function apiRequest<T>(path: string, options: RequestInit = {}): Promise<T> {
   const token = localStorage.getItem("token");
-
+  
   const response = await fetch(`${API_URL}${path}`, {
     ...options,
     headers: {
@@ -27,6 +24,10 @@ export async function apiRequest<T>(
 
   if (!response.ok) {
     throw new ApiError("API request failed", response.status);
+  }
+
+  if (response.status === 204) {
+    return undefined as T;
   }
 
   return response.json();

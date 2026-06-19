@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Subject } from "./Subject";
+import { Subject } from "../models/Subject";
 import { SubjectModal } from "./components/SubjectModal";
 import { SubjectTable } from "./components/SubjectTable";
 import { getSubjects } from "~/api/subjects";
@@ -105,19 +105,17 @@ export function Subjects(){
                     </p>
                     )}
 
-                    {loading ? (
-                    <p>Loading subjects...</p>
-                    ) : (
+
                     <SubjectTable
                         subjects={subjects}
                         showing={subjects.length}
                         total={totalItems}
+                        loading={loading}
                         onEdit={(subject) => {
-                        setSelectedSubject(subject);
-                        setModalMode("edit");
+                            setSelectedSubject(subject);
+                            setModalMode("edit");
                         }}
                     />
-                    )}
             </div>
         </main>
     )

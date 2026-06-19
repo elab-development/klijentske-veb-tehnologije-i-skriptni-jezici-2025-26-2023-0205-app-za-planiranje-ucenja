@@ -1,15 +1,16 @@
 import { arrowRightBlack } from "~/constants";
-import type { Subject } from "../Subject";
+import type { Subject } from "../../models/Subject";
 import { SubjectTableRow } from "./SubjectTableRow";
 
 type SubjectTableProps = {
     subjects: Subject[];
     showing: number;
     total: number;
+    loading?: boolean;
     onEdit?: (subject: Subject) => void;
 };
 
-export function SubjectTable({ subjects, showing, total, onEdit }: SubjectTableProps){
+export function SubjectTable({ subjects, showing, total, loading = false, onEdit }: SubjectTableProps){
     return(
         <div className="subjectTableCard">
             <table className="subjectTable">
@@ -23,13 +24,27 @@ export function SubjectTable({ subjects, showing, total, onEdit }: SubjectTableP
                     </tr>
                 </thead>
                 <tbody>
-                    {subjects.map((subject) => (
-                        <SubjectTableRow
-                            subject={subject}
-                            key={subject.id}
-                            onEdit={onEdit}
-                        />
-                    ))}
+                    {loading ? (
+                        <tr>
+                            <td colSpan={5} className="text-center py-6">
+                                Loading subjects...
+                            </td>
+                        </tr>
+                    ) : subjects.length === 0 ? (
+                        <tr>
+                            <td colSpan={5} className="text-center py-6">
+                                No subjects found.
+                            </td>
+                        </tr>
+                    ) : (
+                        subjects.map((subject) => (
+                            <SubjectTableRow
+                                subject={subject}
+                                key={subject.id}
+                                onEdit={onEdit}
+                            />
+                        ))
+                    )}
                 </tbody>
             </table>
 
