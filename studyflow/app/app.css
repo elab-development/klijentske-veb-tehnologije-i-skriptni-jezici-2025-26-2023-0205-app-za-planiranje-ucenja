@@ -23,7 +23,7 @@ html[data-theme="dark"] {
   --border-color: #2D3A4A;
   --border-color-dark: #3A485A;
   --text-light: #CBD5E1;
-  --text-light2: #94A3B8;
+  --text-light2: #808c9c;
   --input-color: #202B38;
   --background-dark: #0B1017;
   --dark-blue-bg: #111827;
@@ -747,8 +747,8 @@ footer>div{
   height: 32px;
   border: none;
   border-radius: 999px;
-  background-color: #EEF2F6;
-  color: var(--text-light);
+  background-color: var(--border-color);
+  color: var(--text-light2);
   font-family: inherit;
   font-size: 14px;
   line-height: 14px;
@@ -945,7 +945,7 @@ footer>div{
 
 .subjectTableStatusPlanned{
   background-color: #EEF2F6;
-  color: var(--text-light);
+  color: var(--text-light2);
 }
 
 .subjectTableStatusPassed{
@@ -1786,7 +1786,6 @@ footer>div{
 .subjectTableActionsButton svg path,
 .subjectTablePageButton svg path,
 .subjectModalCloseButton svg path,
-.subjectModalIconPreview svg path,
 .profileImgHolder svg path,
 .signOutBtn svg path,
 .testScrollButton svg path{
