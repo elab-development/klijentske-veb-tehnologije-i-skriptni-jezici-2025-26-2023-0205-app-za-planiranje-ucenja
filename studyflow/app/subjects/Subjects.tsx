@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Subject } from "../models/Subject";
+import { Subject, type ExamPeriod, type SubjectStatus } from "../models/Subject";
 import { SubjectModal } from "./components/SubjectModal";
 import { SubjectTable } from "./components/SubjectTable";
 import { getSubjects } from "~/api/subjects";
@@ -8,11 +8,15 @@ export function Subjects(){
     const [subjects, setSubjects] = useState<Subject[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+
     const [page, setPage] = useState(1);
     const [totalItems, setTotalItems] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
-
     const limit = 5;
+
+    const [statusFilter, setStatusFilter] = useState<SubjectStatus | "All">("All");
+    const [examPeriodFilter, setExamPeriodFilter] = useState<ExamPeriod>("Summer");
+    const [yearFilter, setYearFilter] = useState(new Date().getFullYear());
 
     const [modalMode, setModalMode] = useState<"add" | "edit" | null>(null);
     const [selectedSubject, setSelectedSubject] = useState<Subject | undefined>();
@@ -28,7 +32,13 @@ export function Subjects(){
             setLoading(true);
             setError("");
 
-            const response = await getSubjects(page, limit);
+            const response = await getSubjects(page, limit,
+                {
+                    status: statusFilter === "All" ? undefined : statusFilter,
+                    examPeriod: examPeriodFilter,
+                    year: yearFilter,
+                }
+            );
 
             setSubjects(response.data);
             setTotalItems(response.pagination.totalItems);
@@ -42,7 +52,7 @@ export function Subjects(){
 
     useEffect(() => {
         loadSubjects();
-    }, [page]);
+    }, [page, statusFilter, examPeriodFilter, yearFilter]);
 
     return(
         <main className="workPageMain">
@@ -66,10 +76,14 @@ export function Subjects(){
                         <div>
                             {statuses.map((status) => (
                                 <button
-                                    className={`subjectStatusButton ${status === "All" ? "active" : ""}`}
+                                    className={`subjectStatusButton ${status === statusFilter ? "active" : ""}`}
                                     type="button"
                                     key={status}
-                                >
+                                    onClick={() => {
+                                        setStatusFilter(status as SubjectStatus | "All");
+                                        setPage(1);
+                                    }}
+                                    >
                                     {status}
                                 </button>
                             ))}
@@ -79,7 +93,13 @@ export function Subjects(){
                     <div className="subjectFilterControls">
                         <label className="subjectField">
                             <span>EXAM PERIOD</span>
-                            <select defaultValue="Summer">
+                            <select 
+                                value={examPeriodFilter}
+                                onChange={(event) => {
+                                    setExamPeriodFilter(event.target.value as ExamPeriod);
+                                    setPage(1);
+                                }}
+                            >
                                 <option>Summer</option>
                                 <option>Winter</option>
                             </select>
@@ -87,7 +107,14 @@ export function Subjects(){
 
                         <label className="subjectField">
                             <span>YEAR</span>
-                            <input type="number" defaultValue="2026" />
+                            <input
+                                type="number"
+                                value={yearFilter}
+                                onChange={(event) => {
+                                    setYearFilter(Number(event.target.value));
+                                    setPage(1);
+                                }}
+                                />
                         </label>
 
                         <button

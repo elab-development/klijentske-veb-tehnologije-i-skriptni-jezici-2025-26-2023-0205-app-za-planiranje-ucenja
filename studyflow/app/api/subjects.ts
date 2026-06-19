@@ -21,8 +21,31 @@ export type CreateSubjectPayload = {
   icon: string;
 };
 
-export function getSubjects(page = 1, limit = 10) {
-  return apiRequest<SubjectsResponse>(`/subjects?page=${page}&limit=${limit}`);
+export type SubjectFilters = {
+  status?: SubjectStatus;
+  examPeriod?: ExamPeriod;
+  year?: number;
+};
+
+export function getSubjects(page = 1, limit = 10, filters: SubjectFilters = {}) {
+  const params = new URLSearchParams();
+
+  params.set("page", String(page));
+  params.set("limit", String(limit));
+
+  if (filters.status) {
+    params.set("status", filters.status);
+  }
+
+  if (filters.examPeriod) {
+    params.set("examPeriod", filters.examPeriod);
+  }
+
+  if (filters.year) {
+    params.set("year", String(filters.year));
+  }
+
+  return apiRequest<SubjectsResponse>(`/subjects?${params.toString()}`);
 }
 
 export function createSubject(data: CreateSubjectPayload) {
