@@ -37,6 +37,12 @@ html[data-theme="dark"] {
   padding: 0;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 
 body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -104,6 +110,8 @@ body {
   position: fixed;
   right: 0;
   bottom: 0;
+  max-width: 46vw;
+  pointer-events: none;
 }
 
 .loginMain header,.registerMain header{
@@ -135,6 +143,9 @@ body {
 .loginMain > div{
   display: flex;
   gap: 15px;
+  width: min(450px, calc(100% - 32px));
+  position: relative;
+  z-index: 1;
 }
 
 .logoAndText{
@@ -171,7 +182,7 @@ body {
   border: 1px solid var(--border-color);
   padding: 60px;
   border-radius: 20px;
-  width: 450px;
+  width: min(450px, 100%);
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -242,13 +253,12 @@ body {
 
 /* -- REGISTER -- */
 .registerMain {
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--neutral);
   display: flex;
 }
 
 .registerMain > div {
-  height: 100%;
   flex: 1;
   display: flex;
   align-items: center;
@@ -256,7 +266,7 @@ body {
 }
 
 .registerMain .loginForm{
-  width: 500px;
+  width: min(500px, 100%);
   padding-block: 30px;
 }
 
@@ -265,8 +275,7 @@ body {
 }
 
 .registerShowcaseGrid{
-  width: 600px;
-  min-width: 600px;
+  width: min(600px, 100%);
   height: 600px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -391,7 +400,7 @@ body {
 /* -- WORK PAGES -- */
 
 .workPageMain{
-  padding-top: 85px;
+  padding-top: 20px;
   flex-grow: 1;
   background-color: var(--work-page-bg);
   display: flex;
@@ -407,7 +416,7 @@ body {
   width: 100%;
   height: 65px;
   background-color: var(--neutral);
-  position: fixed;
+  position: sticky;
   left: 0;
   top: 0;
   border-bottom:1px solid var(--border-color);
@@ -419,19 +428,49 @@ body {
   z-index: 999;
 }
 
+.headerBrand,
+.headerNav,
+.headerProfile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerBrand{
+  gap: 14px;
+}
+
+.headerBrand p{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.headerNav{
+  gap: 8px;
+}
+
+.headerProfile{
+  gap: 8px;
+  justify-content: flex-end;
+}
+
 .workHeader a{
   color: var(--link-inactive);
   font-size: 14px;
+  border-radius: 30px;
+  padding: 8px 15px;
+  text-decoration: none;
 }
 
 .workHeader a.activeLink {
   color: var(--teriary);
-  text-decoration: underline;
+  background-color: var(--input-color);
+  border: 1px solid var(--border-color);
 }
 
 .workHeader a:hover {
   color: var(--teriary);
-  text-decoration: underline;
+  background-color: var(--input-color);
 }
 
 .workHeader img{
@@ -444,27 +483,62 @@ body {
   color: var(--teriary);
 }
 
+.workHeader > div,
+.workHeader > nav,
+.workHeader > a{
+  min-width: 0;
+}
+
 /* -- FOOTER -- */
 footer
 {
   background-color: var(--neutral);
   width: 100%;
-  height: 160px;
+  min-height: 120px;
   border-top: 1px solid var(--border-color);
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding-inline: 100px;
+  gap: 24px;
   z-index: 100;
 }
 
-footer>div{
-  height: 100%;
-  width: 100%;
+.footerBrand,
+.footerMeta,
+.footerNav{
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.footerBrand p{
+  color: var(--teriary);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.footerMeta{
+  justify-content: center;
+  text-align: center;
+}
+
+.footerMeta p{
+  color: var(--link-inactive);
+  font-size: 13px;
+}
+
+.footerNav{
+  justify-content: flex-end;
+  gap: 22px;
+  flex-wrap: wrap;
 }
 
 .footerLink{
   color: var(--link-inactive);
   font-size: 13px;
+  border-radius: 999px;
+  padding: 6px 0;
 }
 
 .footerLink:hover{
@@ -476,12 +550,16 @@ footer>div{
 /* -- PROFILE -- */
 
 .profileHolder{
-  width: 800px;
+  width: min(800px, 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px
+}
+
+.profileSections{
+  width: 100%;
 }
 .profileInfo{
     height: 178px;
@@ -837,11 +915,13 @@ footer>div{
   background-color: var(--neutral);
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .subjectTable{
   width: 100%;
+  min-width: 760px;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -1455,8 +1535,8 @@ footer>div{
   background-color: var(--teriary);
  }
  
- .contentHolder{
-  width: 960px;
+.contentHolder{
+  width: min(960px, 100%);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1494,10 +1574,12 @@ footer>div{
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 16px;
 }
 
 .subjectModal{
   width: min(448px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
   background-color: var(--neutral);
   border-radius: 12px;
   border: 1px solid var(--border-color);
@@ -1754,8 +1836,16 @@ footer>div{
   padding-inline: 24px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
+}
+
+.subjectModalActions{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-left: auto;
 }
 
 .subjectModalCancelButton,
@@ -1779,6 +1869,13 @@ footer>div{
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
 }
 
+.subjectModalDangerButton{
+  margin-right: auto;
+  border-color: #FCA5A5;
+  background-color: #FFD2D0;
+  color: #A11313;
+}
+
 .subjectModalPrimaryButton{
   min-width: 132px;
   border: none;
@@ -1788,6 +1885,10 @@ footer>div{
 
 .subjectModalCancelButton:hover{
   background-color: var(--input-color);
+}
+
+.subjectModalDangerButton:hover{
+  background-color: #FECACA;
 }
 
 .subjectModalPrimaryButton:hover{
@@ -1813,6 +1914,704 @@ footer>div{
 
 .profileImgHolder{
   color: var(--neutral);
+}
+
+@media (max-width: 1100px){
+  .registerMain{
+    align-items: stretch;
+    flex-direction: column;
+    padding-top: 64px;
+  }
+
+  .registerMain > div{
+    width: 100%;
+  }
+
+  .registerMain > .registerShowcase{
+    display: none;
+  }
+
+  .registerMain > div:last-child{
+    min-height: calc(100vh - 64px);
+    padding: 32px 16px;
+  }
+
+  .dashboardFeaturesHolder{
+    height: auto;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .dashboardFeature{
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 900px){
+  .workPageMain{
+    padding-inline: 20px;
+  }
+
+  .workHeader{
+    height: auto;
+    min-height: 65px;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    padding: 10px 16px;
+  }
+
+  .workHeader > div:first-child{
+    order: 1;
+  }
+
+  .workHeader > a{
+    order: 2;
+    max-width: 48%;
+    justify-content: flex-end;
+  }
+
+  .workHeader > .headerNav{
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .workHeader a{
+    font-size: 13px;
+  }
+
+  footer{
+    height: auto;
+    min-height: 120px;
+    padding: 24px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footerBrand,
+  .footerMeta,
+  .footerNav{
+    flex: 1 1 220px;
+  }
+
+  .dashboardFeaturesHolder{
+    flex-direction: column;
+  }
+
+  .profileInfo{
+    height: auto;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .statCardHolder,
+  .settingsHolder{
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .statCard{
+    min-width: 180px;
+  }
+
+  .subjectFilterBar{
+    align-items: stretch;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .subjectFilterControls{
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .subjectField{
+    flex: 1 1 180px;
+  }
+
+  .subjectField select,
+  .subjectField input{
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px){
+  .notFoundPage{
+    padding: 24px;
+    text-align: center;
+  }
+
+  .notFoundPage img{
+    width: min(100%, 360px);
+  }
+
+  .notFoundPage h1{
+    font-size: 26px;
+  }
+
+  .loginMain,
+  .registerMain{
+    align-items: stretch;
+  }
+
+  .registerMain{
+    padding: 88px 16px 28px;
+  }
+
+  .loginMain{
+    padding: 96px 16px 32px;
+  }
+
+  .loginMain header,
+  .registerMain header{
+    height: auto;
+    min-height: 64px;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+
+  .loginMain header p,
+  .registerMain header p{
+    display: none;
+  }
+
+  .loginBackgroundImage,
+  .registerMain > .registerShowcase{
+    display: none;
+  }
+
+  .loginMain > div{
+    width: 100%;
+  }
+
+  .registerMain > div:last-child{
+    min-height: auto;
+    padding: 0;
+    width: 100%;
+  }
+
+  .logoAndText{
+    text-align: center;
+  }
+
+  .logoAndText h1{
+    font-size: 28px;
+  }
+
+  .logoAndText p{
+    max-width: 280px;
+  }
+
+  .loginForm,
+  .registerMain .loginForm{
+    padding: 24px;
+    border-radius: 14px;
+  }
+
+  .customInput{
+    height: 52px;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .customInput input{
+    min-width: 0;
+  }
+
+  .infoPages{
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 6px;
+    text-align: center;
+  }
+
+  .workPageMain{
+    padding-top: 20px;
+    padding-inline: 14px;
+  }
+
+  .workHeader{
+    gap: 8px 12px;
+  }
+
+  .workHeader > div:first-child p{
+    font-size: 18px;
+  }
+
+  .workHeader > a{
+    max-width: 52%;
+    font-size: 12px;
+  }
+
+  .workHeader > a[href="/profile"]{
+    max-width: none;
+    font-size: 0;
+    gap: 0;
+    text-decoration: none;
+    padding: 4px;
+  }
+
+  .workHeader img{
+    width: 28px;
+  }
+
+  footer{
+    align-items: center;
+    flex-direction: column;
+    min-height: 0;
+    padding: 24px 16px;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .footerBrand,
+  .footerMeta,
+  .footerNav{
+    flex: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footerNav{
+    gap: 8px 18px;
+  }
+
+  .footerLink{
+    padding: 6px 4px;
+  }
+
+  .workPageTitleHolder{
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .workPageTitleHolder p:nth-child(1){
+    font-size: 28px;
+    line-height: 1.15;
+  }
+
+  .heading1{
+    font-size: 26px;
+  }
+
+  .featureHeader{
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .featureHeader p{
+    font-size: 22px;
+  }
+
+  .timerSubjectSelect{
+    width: 100%;
+    min-width: 0;
+  }
+
+  .timerDisplay{
+    font-size: 54px;
+  }
+
+  .timerActions,
+  .timerActionsWithReset{
+    width: 100%;
+  }
+
+  .timerButton,
+  .timerResetButton{
+    height: 58px;
+  }
+
+  .progressStats{
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .testCard{
+    flex-basis: 86vw;
+    padding: 20px;
+  }
+
+  .testMeta{
+    align-items: flex-start;
+    font-size: 14px;
+  }
+
+  .profileInfo{
+    flex-direction: column;
+    align-items: center;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 22px;
+    text-align: center;
+  }
+
+  .profileInfo > div:first-child{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 14px;
+  }
+
+  .profileInfo > div:last-child{
+    width: 100%;
+    height: auto;
+    align-items: stretch;
+  }
+
+  .profileDetails{
+    align-items: center;
+  }
+
+  .profileDetailItem{
+    justify-content: center;
+  }
+
+  .profileImgHolder img{
+    width: 96px;
+  }
+
+  .personalBio{
+    width: 100%;
+    padding: 20px;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+  }
+
+  .profileHolder > div:last-child{
+    width: 100%;
+    padding-inline: 0 !important;
+  }
+
+  .signOutBtn,
+  .bigSettingButton{
+    width: 100%;
+  }
+
+  .stats{
+    padding: 20px;
+    gap: 28px;
+    border-radius: 14px;
+  }
+
+  .stats h3{
+    text-align: left;
+    letter-spacing: 0.02em;
+  }
+
+  .statCardHolder{
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .statCard{
+    min-width: 0;
+    padding-left: 14px;
+  }
+
+  .statCard h1{
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .settingsHolder{
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+  }
+
+  .settingsHolder > div{
+    width: 100%;
+  }
+
+  .settingsHolder > div:first-child > div:last-child{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .themeCard{
+    width: 100%;
+    padding-inline: 18px;
+    min-height: 72px;
+  }
+
+  .subjectStatusFilters > div{
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .subjectStatusFilters > div::-webkit-scrollbar{
+    display: none;
+  }
+
+  .subjectFilterControls{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 112px;
+    align-items: end;
+    gap: 14px;
+  }
+
+  .subjectFilterBar{
+    min-height: 0;
+    padding: 20px;
+    gap: 18px;
+  }
+
+  .subjectField{
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .subjectNewButton{
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 48px;
+    border-radius: 9px;
+  }
+
+  .subjectStatusButton{
+    flex: 0 0 auto;
+    min-width: auto;
+    padding-inline: 14px;
+  }
+
+  .subjectTableCard{
+    overflow: visible;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+  }
+
+  .subjectTable{
+    display: block;
+    min-width: 0;
+  }
+
+  .subjectTable thead{
+    display: none;
+  }
+
+  .subjectTable tbody{
+    display: grid;
+    gap: 12px;
+  }
+
+  .subjectTable tr{
+    display: grid;
+    gap: 12px;
+    background-color: var(--neutral);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  }
+
+  .subjectTable td{
+    height: auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: var(--teriary);
+    text-align: right;
+  }
+
+  .subjectTable td::before{
+    color: var(--text-light2);
+    content: "";
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 16px;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .subjectTable td:nth-child(1){
+    justify-content: flex-start;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+  }
+
+  .subjectTable td:nth-child(1)::before{
+    display: none;
+  }
+
+  .subjectTable td:nth-child(2)::before{
+    content: "Exam";
+  }
+
+  .subjectTable td:nth-child(3)::before{
+    content: "Status";
+  }
+
+  .subjectTable td:nth-child(4)::before{
+    content: "Grade";
+  }
+
+  .subjectTable td:nth-child(5)::before{
+    content: "Actions";
+  }
+
+  .subjectTable td:nth-child(4),
+  .subjectTable td:nth-child(5){
+    text-align: right;
+  }
+
+  .subjectNameCell{
+    width: 100%;
+  }
+
+  .subjectNameCell strong{
+    font-size: 17px;
+  }
+
+  .subjectTableActionsButton{
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-color);
+  }
+
+  .subjectTable th,
+  .subjectTable td{
+    padding-inline: 0;
+  }
+
+  .subjectTableFooter{
+    align-items: center;
+    flex-direction: row;
+    margin-top: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    background-color: var(--neutral);
+    padding: 16px;
+  }
+
+  .subjectTablePageButton{
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background-color: var(--input-color);
+  }
+
+  .subjectModal{
+    width: 100%;
+  }
+
+  .subjectModalForm{
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+
+  .subjectModalGrid{
+    grid-template-columns: 1fr;
+    padding: 22px 18px 0;
+  }
+
+  .subjectModalIconField > div{
+    grid-template-columns: 1fr;
+  }
+
+  .subjectModalStatus{
+    margin: 20px 18px 28px;
+  }
+
+  .subjectModalStatus > div{
+    flex-wrap: wrap;
+  }
+
+  .subjectModalFooter{
+    height: auto;
+    min-height: 68px;
+    padding: 14px 18px;
+    gap: 8px;
+  }
+
+  .subjectModalActions{
+    gap: 8px;
+  }
+
+  .subjectModalCancelButton{
+    min-width: 74px;
+    padding-inline: 12px;
+  }
+
+  .subjectModalPrimaryButton{
+    min-width: 124px;
+    padding-inline: 16px;
+  }
+}
+
+@media (max-width: 420px){
+  .workHeader > .headerNav{
+    justify-content: flex-start;
+  }
+
+  .workHeader > .headerNav a{
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .workHeader > a{
+    max-width: 100%;
+  }
+
+  .dashboardFeature{
+    padding: 18px;
+  }
+
+  .timerDisplay{
+    font-size: 46px;
+  }
+
+  .timerActionsWithReset{
+    flex-direction: column;
+  }
+
+  .timerResetButton{
+    width: 100%;
+  }
+
+  .progressCircleHolder{
+    width: 150px;
+    height: 150px;
+  }
+
+  .progressCircleText h2{
+    font-size: 28px;
+  }
+
+  .testsHeader{
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .testScrollActions{
+    align-self: flex-end;
+  }
+
+  .loginForm,
+  .registerMain .loginForm{
+    padding: 20px 16px;
+  }
+
+  .formBtn{
+    height: 50px;
+  }
 }
 
 

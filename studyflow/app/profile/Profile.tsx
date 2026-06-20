@@ -90,7 +90,7 @@ export function Profile() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col items-center justify-center px-5! gap-5">
+                <div className="profileSections flex flex-col items-center justify-center gap-5">
 
 
                     <Stats />

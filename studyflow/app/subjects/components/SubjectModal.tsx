@@ -215,14 +215,14 @@ export function SubjectModal({ mode, subject, onClose, onCreated }: SubjectModal
                     <div className="subjectModalFooter">
                         {isEditMode && (
                             <button
-                            className="subjectModalCancelButton bg-[#FFD2D0]! text-[#A11313]!"
+                            className="subjectModalCancelButton subjectModalDangerButton"
                             type="button"
                             onClick={handleDelete}
                             >
                             Delete
                             </button>
                         )}
-                        <div className="flex gap-3">
+                        <div className="subjectModalActions">
                             <button className="subjectModalCancelButton" type="button" onClick={onClose}>
                             Cancel
                             </button>

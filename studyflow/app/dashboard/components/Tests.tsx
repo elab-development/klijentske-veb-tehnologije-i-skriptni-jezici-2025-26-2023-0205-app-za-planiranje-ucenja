@@ -58,7 +58,7 @@ export function Tests(){
                 />
                 <TestCard
                     priority="low"
-                    title="KETH"
+                    title="KTEH"
                     date="May 15, 2024"
                     time="09:00 AM"
                     readiness={85}

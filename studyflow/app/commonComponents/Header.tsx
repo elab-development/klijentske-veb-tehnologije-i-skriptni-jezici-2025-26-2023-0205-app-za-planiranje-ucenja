@@ -28,11 +28,11 @@ export function Header() {
 
     return (
         <header className="workHeader">
-            <div className="flex items-center gap-5">
+            <div className="headerBrand">
                 {logo}
-                <p className="text-[20px]">StudyFlow</p>
+                <p>StudyFlow</p>
             </div>
-            <div className="flex items-center gap-5">
+            <nav className="headerNav" aria-label="Main navigation">
                 <NavLink to="/" className={({ isActive }) => isActive ? "activeLink" : ""}>
                     Dashboard
                 </NavLink>
@@ -44,8 +44,8 @@ export function Header() {
                 <NavLink to="/study-plan" className={({ isActive }) => isActive ? "activeLink" : ""}>
                     Study Plan
                 </NavLink>
-            </div>
-            <NavLink to="/profile" className={({ isActive }) => `flex items-center gap-2 ${isActive ? "activeLink" : ""}`}>
+            </nav>
+            <NavLink to="/profile" className={({ isActive }) => `headerProfile ${isActive ? "activeLink" : ""}`}>
                 {user?.displayName || "Profile"}
                 <img src={user?.profileImage || "/images/profile.png"} alt="" />
             </NavLink>

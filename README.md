@@ -1,14 +1,12 @@
 # StudyFlow
 
-StudyFlow je web aplikacija za planiranje ucenja namenjena studentima koji zele da organizuju gradivo, prate napredak i imaju pregled najvaznijih akademskih obaveza na jednom mestu.
+StudyFlow je responzivna web aplikacija za planiranje ucenja namenjena studentima koji zele da prate predmete, ispitne obaveze, vreme ucenja i akademski napredak na jednom mestu.
 
-Projekat je nastao kao deo domaceg zadatka iz predmeta **Klijentske veb tehnologije i skriptni jezici**. Dizajn aplikacije je prvo razradjen u Figmi, a zatim implementiran kao React Router aplikacija.
+Projekat je nastao kao deo domaceg zadatka iz predmeta **Klijentske veb tehnologije i skriptni jezici**. Aplikacija je implementirana kao React Router aplikacija, uz TypeScript, Tailwind CSS i custom CSS za finalni responsive UI.
 
-## Opis projekta
+## Trenutno stanje aplikacije
 
-Ideja aplikacije je da studentima omoguci pregledniji rad tokom semestra i ispitnog roka. Kroz StudyFlow korisnik moze da se registruje ili prijavi, pristupi dashboard-u, prati planove ucenja, evidentira predmete i pregleda svoj profil sa akademskim statistikama.
-
-Trenutna implementacija sadrzi osnovnu strukturu aplikacije, layout, autentifikacione stranice, profil rutu, dashboard rutu i prilagodjenu 404 stranicu. Dokumentacijom i Figma dizajnom su predvidjeni dodatni moduli za predmete i planove ucenja.
+Aplikacija sada ima kompletiran korisnicki tok za prijavu/registraciju, dashboard, profil i pracenje predmeta. Interfejs je prilagodjen desktop i mobilnim ekranima: header je sticky, footer je responzivan, tabele se na telefonu prikazuju kao kartice, a modalni prozori imaju mobilni layout.
 
 ## Tehnologije
 
@@ -18,67 +16,80 @@ Trenutna implementacija sadrzi osnovnu strukturu aplikacije, layout, autentifika
 - Vite
 - Tailwind CSS 4
 - CSS
+- Local Storage za cuvanje tokena, korisnika i teme
 
 ## Funkcionalnosti
 
 Implementirano:
 
-- globalni layout sa header navigacijom i footer-om
-- Login stranica sa formom za prijavu
-- Register stranica sa formom za kreiranje naloga
-- Dashboard ruta
-- Profile ruta
-- aktivni linkovi u navigaciji preko `NavLink`
-- catch-all 404 ruta
-- custom Not Found stranica
-- responzivni vizuelni elementi i asset-i iz `public/images`
+- Login stranica sa prijavom korisnika
+- Register stranica sa kreiranjem naloga
+- Dashboard sa ukupnim napretkom, study timer-om i karticama predstojecih testova
+- Subjects stranica sa listom predmeta
+- filtriranje predmeta po statusu, ispitnom roku i godini
+- dodavanje, izmena i brisanje predmeta kroz modal
+- mobilni prikaz predmeta kao kartica umesto siroke tabele
+- Profile stranica sa korisnickim podacima, biografijom, statistikama i podesavanjima
+- izmena profila kroz modal
+- light/dark tema
+- aktivni linkovi u navigaciji
+- sticky header i responzivni footer
+- custom 404 stranica
+- responsive dizajn za telefon, tablet i desktop
 
-Planirano prema dokumentaciji i Figma dizajnu:
+Napomena:
 
-- Study Plans stranica sa listom planova ucenja
-- detaljan prikaz pojedinacnog plana
-- dodavanje, izmena i brisanje poglavlja u planu
-- Subjects stranica sa tabelom predmeta
-- dodavanje, izmena i brisanje predmeta
-- filtriranje predmeta po statusu
-- akademske statistike na profilu
-- podesavanja naloga
-- study timer i pregled predstojecih ispita
+- Navigacioni link za `/study-plan` postoji u header-u, ali modul za planove ucenja jos nije implementiran.
 
 ## Stranice i rute
 
 | Ruta | Stranica | Opis |
 | --- | --- | --- |
-| `/` | Dashboard | Pocetna stranica aplikacije nakon ulaska u sistem |
-| `/login` | Login | Forma za prijavu korisnika |
-| `/register` | Register | Forma za registraciju novog korisnika |
-| `/profile` | Profile | Profil korisnika |
-| `*` | Not Found | Prilagodjena 404 stranica za nepostojece rute |
+| `/` | Dashboard | Pregled napretka, timer i testovi |
+| `/login` | Login | Prijava postojeceg korisnika |
+| `/register` | Register | Registracija novog korisnika |
+| `/subjects` | Subjects | Pregled, filtriranje, dodavanje, izmena i brisanje predmeta |
+| `/profile` | Profile | Korisnicki profil, statistike i podesavanja |
+| `*` | Not Found | Prilagodjena 404 stranica |
 
 ## Struktura projekta
 
 ```text
 studyflow/
 |-- app/
+|   |-- api/
+|   |   |-- auth.ts
+|   |   |-- client.ts
+|   |   `-- subjects.ts
 |   |-- commonComponents/
-|   |   |-- Header.tsx
-|   |   `-- Footer.tsx
+|   |   |-- Footer.tsx
+|   |   `-- Header.tsx
 |   |-- dashboard/
-|   |   `-- Dashboard.tsx
+|   |   |-- Dashboard.tsx
+|   |   |-- TimerContext.tsx
+|   |   `-- components/
 |   |-- login/
 |   |   |-- Login.tsx
+|   |   `-- components/
+|   |-- models/
+|   |   |-- Subject.ts
+|   |   `-- User.ts
+|   |-- profile/
+|   |   |-- Profile.tsx
 |   |   `-- components/
 |   |-- register/
 |   |   |-- Register.tsx
 |   |   `-- components/
-|   |-- profile/
-|   |   `-- Profile.tsx
 |   |-- routes/
 |   |   |-- home.tsx
 |   |   |-- login.tsx
-|   |   |-- register.tsx
+|   |   |-- not-found.tsx
 |   |   |-- profile.tsx
-|   |   `-- not-found.tsx
+|   |   |-- register.tsx
+|   |   `-- subjects.tsx
+|   |-- subjects/
+|   |   |-- Subjects.tsx
+|   |   `-- components/
 |   |-- app.css
 |   |-- constants.tsx
 |   |-- root.tsx
@@ -92,25 +103,31 @@ studyflow/
 
 ## Pokretanje projekta
 
-Potrebno je instalirati Node.js i npm.
+Udji u folder aplikacije:
 
-Instalacija zavisnosti:
+```bash
+cd studyflow
+```
+
+Instaliraj zavisnosti:
 
 ```bash
 npm install
 ```
 
-Pokretanje development servera:
+Pokreni development server:
 
 ```bash
 npm run dev
 ```
 
-Aplikacija ce biti dostupna na:
+Aplikacija je podrazumevano dostupna na:
 
 ```text
 http://localhost:5173
 ```
+
+Ako je port zauzet, Vite/React Router moze ponuditi drugi port.
 
 ## Dostupne komande
 
@@ -137,6 +154,10 @@ npm run typecheck
 ```
 
 Generise React Router tipove i pokrece TypeScript proveru.
+
+## API i podaci
+
+Aplikacija koristi API sloj iz `app/api/` za autentifikaciju i predmete. Token i korisnicki podaci se cuvaju u `localStorage`, a tema se cuva pod kljucem `theme`.
 
 ## Autor
 
