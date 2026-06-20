@@ -4,11 +4,11 @@ import { Settings } from "./components/Settings";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import type { AuthUser } from "~/api/auth";
+import { User } from "~/models/User";
 
 export function Profile() {
     const navigate = useNavigate();
-    const [user, setUser] = useState<AuthUser | null>(null);
+    const [user, setUser] = useState<User  | null>(null);
 
     useEffect(() => {
         const savedUser = localStorage.getItem("user");
@@ -19,17 +19,12 @@ export function Profile() {
             return;
         }
 
-        setUser(JSON.parse(savedUser));
+        setUser(new User(JSON.parse(savedUser)));
     }, [navigate]);
 
     if (!user) {
         return <main className="workPageMain">Loading profile...</main>;
     }
-
-    const joinedDate = new Date(user.created_at).toLocaleDateString("en-US", {
-        month: "short",
-        year: "numeric",
-    });
 
     function handleSignOut() {
         localStorage.clear();
@@ -43,13 +38,13 @@ export function Profile() {
                     <div className="profileInfo">
                         <div className="flex items-center gap-5">
                             <div className="profileImgHolder">
-                                <img src={user.profile_pic_url || "/images/profile.png"} alt="" />
+                                <img src={user.profileImage || "/images/profile.png"} alt="" />
                                 <button>
                                     {edit}
                                 </button>
                             </div>
                             <div>
-                                <p className="fullName">{user.full_name}</p>
+                                <p className="fullName">{user.displayName}</p>
                                 <div className="profileDetails">
                                     <div className="profileDetailItem">
                                         {uni}
@@ -57,7 +52,7 @@ export function Profile() {
                                     </div>
                                     <div className="profileDetailItem">
                                         {calendar}
-                                        <p className="text-(--text-light) text-[14px] font-medium">Joined {joinedDate}</p>
+                                        <p className="text-(--text-light) text-[14px] font-medium">Joined {user.joinedDate}</p>
                                     </div>
                                 </div>
                             </div>

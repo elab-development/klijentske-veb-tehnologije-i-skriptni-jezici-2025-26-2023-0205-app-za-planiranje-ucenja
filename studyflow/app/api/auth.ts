@@ -1,18 +1,9 @@
 import { apiRequest } from "./client";
 
-export type AuthUser = {
-  id: string;
-  full_name: string;
-  email: string;
-  biography: string | null;
-  university_name: string;
-  profile_pic_url: string | null;
-  created_at: string;
-  updated_at: string;
-};
+import { User, type UserData } from "~/models/User";
 
 export type AuthResponse = {
-  user: AuthUser;
+  user: UserData;
   token: string;
 };
 
@@ -28,16 +19,26 @@ export type LoginPayload = {
   password: string;
 };
 
-export function registerUser(data: RegisterPayload) {
-  return apiRequest<AuthResponse>("/auth/register", {
+export async function registerUser(data: RegisterPayload) {
+  const response = await apiRequest<AuthResponse>("/auth/register", {
     method: "POST",
     body: JSON.stringify(data),
   });
+
+  return {
+    ...response,
+    user: new User(response.user),
+  };
 }
 
-export function loginUser(data: LoginPayload) {
-  return apiRequest<AuthResponse>("/auth/login", {
+export async function loginUser(data: LoginPayload) {
+  const response = await apiRequest<AuthResponse>("/auth/login", {
     method: "POST",
     body: JSON.stringify(data),
   });
+
+  return {
+    ...response,
+    user: new User(response.user),
+  };
 }

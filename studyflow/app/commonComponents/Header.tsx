@@ -1,16 +1,16 @@
 import { NavLink } from "react-router";
 import { useEffect, useState } from "react";
 import { logo } from "~/constants";
-import type { AuthUser } from "~/api/auth";
+import { User } from "~/models/User";
 
 export function Header(){
-    const [user, setUser] = useState<AuthUser | null>(null);
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
         const savedUser = localStorage.getItem("user");
 
         if (savedUser) {
-        setUser(JSON.parse(savedUser));
+        setUser(new User(JSON.parse(savedUser)));
         }
     }, []);
 
@@ -34,8 +34,8 @@ export function Header(){
                     </NavLink>
                 </div>     
                 <NavLink to="/profile" className={({ isActive }) =>`flex items-center gap-2 ${isActive ? "activeLink" : ""}`}>
-                    {user?.full_name || "Profile"}
-                    <img src={user?.profile_pic_url || "/images/profile.png"} alt="" />
+                    {user?.displayName || "Profile"}
+                    <img src={user?.profileImage || "/images/profile.png"} alt="" />
                 </NavLink>
             </header>
     )
