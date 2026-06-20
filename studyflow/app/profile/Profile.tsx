@@ -6,9 +6,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { User } from "~/models/User";
 
+import { UserModal } from "./components/UserModal";
+
 export function Profile() {
     const navigate = useNavigate();
     const [user, setUser] = useState<User  | null>(null);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
     useEffect(() => {
         const savedUser = localStorage.getItem("user");
@@ -33,13 +36,20 @@ export function Profile() {
 
     return (
         <main className="workPageMain">
+            {isEditModalOpen && user && (
+                <UserModal
+                    user={user}
+                    onClose={() => setIsEditModalOpen(false)}
+                    onSaved={(updatedUser) => setUser(updatedUser)}
+                />
+            )}
             <div className="profileHolder">
                 <div className="flex flex-col items-center w-full">
                     <div className="profileInfo">
                         <div className="flex items-center gap-5">
                             <div className="profileImgHolder">
                                 <img src={user.profileImage || "/images/profile.png"} alt="" />
-                                <button>
+                                <button type="button" onClick={() => setIsEditModalOpen(true)}>
                                     {edit}
                                 </button>
                             </div>

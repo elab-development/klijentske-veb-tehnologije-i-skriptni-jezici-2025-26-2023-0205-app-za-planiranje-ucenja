@@ -1609,6 +1609,11 @@ footer>div{
 .subjectModalField select:focus{
   border-color: var(--teriary);
 }
+.subjectModalField textarea {
+  min-height: 120px;
+  resize: vertical;
+  padding: 5px;
+}
 
 .subjectModalIconField{
   grid-column: 1 / -1;
