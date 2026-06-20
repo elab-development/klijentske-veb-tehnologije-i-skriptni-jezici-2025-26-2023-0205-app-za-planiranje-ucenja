@@ -91,15 +91,16 @@ export function UserModal({ user, onClose, onSaved }: UserModalProps) {
                                 placeholder="https://example.com/profile.png"
                             />
                         </label>
-
+                    </div>
+                    <div className="subjectModalStatus">
                         <label className="subjectModalField">
-                            <span>BIOGRAPHY</span>
-                            <textarea
-                                name="biography"
-                                defaultValue={user.biography ?? ""}
-                                placeholder="Write something about yourself..."
-                            />
-                        </label>
+                        <span>BIOGRAPHY</span>
+                        <textarea
+                            name="biography"
+                            defaultValue={user.biography ?? ""}
+                            placeholder="Write something about yourself..."
+                        />
+                    </label>
                     </div>
 
                     {error && (

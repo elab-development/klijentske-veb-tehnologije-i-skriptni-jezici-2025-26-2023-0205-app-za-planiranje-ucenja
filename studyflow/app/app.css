@@ -92,8 +92,12 @@ body {
   align-items: center;
   justify-content: center;
 }
-.loginMain,.registerMain a{
+.loginMain a,.registerMain a{
   color: var(--text-light2);
+}
+.loginMain a:hover,.registerMain a:hover{
+  color: var(--teriary);
+  text-decoration: underline;
 }
 
 .loginBackgroundImage{
@@ -144,6 +148,7 @@ body {
 .logoAndText h1{
   font-size: 32px;
   font-weight: 600;
+  color: var(--teriary);
 }
 
 .logoAndText p{
@@ -229,6 +234,7 @@ body {
   gap: 10px;
   line-height: 1px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 
@@ -1612,7 +1618,12 @@ footer>div{
 .subjectModalField textarea {
   min-height: 120px;
   resize: vertical;
-  padding: 5px;
+  padding-block: 5px;
+  padding-inline: 10px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border-color-dark);
+  color: var(--teriary);
 }
 
 .subjectModalIconField{

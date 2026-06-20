@@ -28,6 +28,7 @@ export function Profile() {
     if (!user) {
         return <main className="workPageMain">Loading profile...</main>;
     }
+    const profileImageSrc = user.profileImage;
 
     function handleSignOut() {
         localStorage.clear();
@@ -48,7 +49,7 @@ export function Profile() {
                     <div className="profileInfo">
                         <div className="flex items-center gap-5">
                             <div className="profileImgHolder">
-                                <img src={user.profileImage || "/images/profile.png"} alt="" />
+                                <img src={profileImageSrc} alt="" />
                                 <button type="button" onClick={() => setIsEditModalOpen(true)}>
                                     {edit}
                                 </button>
