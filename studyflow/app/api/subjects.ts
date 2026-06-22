@@ -1,8 +1,8 @@
 import { apiRequest } from "./client";
-import type { ExamPeriod, Subject, SubjectStatus } from "~/models/Subject";
+import { Subject, type ExamPeriod, type SubjectData, type SubjectStatus } from "~/models/Subject";
 
 export type SubjectsResponse = {
-  data: Subject[];
+  data: SubjectData[];
   pagination: {
     page: number;
     limit: number;
@@ -45,7 +45,10 @@ export function getSubjects(page = 1, limit = 10, filters: SubjectFilters = {}) 
     params.set("year", String(filters.year));
   }
 
-  return apiRequest<SubjectsResponse>(`/subjects?${params.toString()}`);
+  return apiRequest<SubjectsResponse>(`/subjects?${params.toString()}`).then((response) => ({
+    ...response,
+    data: response.data.map((subject) => new Subject(subject)),
+  }));
 }
 
 export function createSubject(data: CreateSubjectPayload) {

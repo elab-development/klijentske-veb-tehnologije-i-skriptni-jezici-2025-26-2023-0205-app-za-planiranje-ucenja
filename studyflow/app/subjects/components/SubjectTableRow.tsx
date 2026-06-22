@@ -23,8 +23,6 @@ function SubjectRowIcon({ icon }: { icon: string }){
 }
 
 export function SubjectTableRow({ subject, onEdit }: SubjectTableRowProps){
-    const gradeContent = subject.status === "Planned" ? "/" : subject.grade;
-
     return(
         <tr className="subjectTableRow">
             <td>
@@ -33,27 +31,27 @@ export function SubjectTableRow({ subject, onEdit }: SubjectTableRowProps){
                         <SubjectRowIcon icon={subject.icon} />
                     </div>
                     <div>
-                        <strong>{subject.name}</strong>
-                        <span>{subject.espb} ESPB</span>
+                        <strong>{subject.getDisplayName()}</strong>
+                        <span>{subject.getCreditsLabel()}</span>
                     </div>
                 </div>
             </td>
-            <td>{subject.exam_period} Semester {subject.exam_year}</td>
+            <td>{subject.getExamLabel()}</td>
             <td>
                 <span className={`subjectTableStatus subjectTableStatus${subject.status}`}>
                     {subject.status}
                 </span>
             </td>
             <td>
-                <strong className={subject.status === "Failed" ? "subjectGradeFailed" : ""}>
-                    {gradeContent}
+                <strong className={subject.isFailed() ? "subjectGradeFailed" : ""}>
+                    {subject.getGradeLabel()}
                 </strong>
             </td>
             <td>
                 <button
                     className="subjectTableActionsButton"
                     type="button"
-                    aria-label={`Edit ${subject.name}`}
+                    aria-label={`Edit ${subject.getDisplayName()}`}
                     onClick={() => onEdit?.(subject)}
                 >
                     {threeDots}
