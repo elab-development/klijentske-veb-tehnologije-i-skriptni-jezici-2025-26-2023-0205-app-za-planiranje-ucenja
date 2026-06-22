@@ -34,8 +34,7 @@ export async function registerUser(data: RegisterPayload) {
   });
 
   return {
-    ...response,
-    user: new User(response.user),
+    ...response
   };
 }
 
@@ -46,8 +45,7 @@ export async function loginUser(data: LoginPayload) {
   });
 
   return {
-    ...response,
-    user: new User(response.user),
+    ...response
   };
 }
 
