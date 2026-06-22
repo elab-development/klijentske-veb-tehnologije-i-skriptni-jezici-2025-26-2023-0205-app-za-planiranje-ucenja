@@ -16,7 +16,7 @@ export function Subjects(){
 
     const [statusFilter, setStatusFilter] = useState<SubjectStatus | "All">("All");
     const [examPeriodFilter, setExamPeriodFilter] = useState<ExamPeriod | "">("");
-    const [yearFilter, setYearFilter] = useState(new Date().getFullYear());
+    const [yearFilter, setYearFilter] = useState(0);
 
     const [modalMode, setModalMode] = useState<"add" | "edit" | null>(null);
     const [selectedSubject, setSelectedSubject] = useState<Subject | undefined>();
