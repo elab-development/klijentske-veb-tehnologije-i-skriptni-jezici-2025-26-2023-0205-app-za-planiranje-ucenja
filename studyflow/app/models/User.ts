@@ -1,3 +1,5 @@
+import type { ProfileDisplayable } from "~/interfaces/ProfileDisplayable";
+
 export type UserData = {
   id: string;
   full_name: string;
@@ -9,7 +11,7 @@ export type UserData = {
   updated_at: string;
 };
 
-export class User {
+export class User implements ProfileDisplayable {
   id: string;
   full_name: string;
   email: string;
@@ -30,15 +32,15 @@ export class User {
     this.updated_at = data.updated_at;
   }
 
-  get displayName() {
+  getDisplayName(): string {
     return this.full_name;
   }
 
-  get profileImage() {
+  getProfileImage(): string {
     return this.profile_pic_url || "/images/profile.png";
   }
 
-  get joinedDate() {
+  getJoinedDate(): string {
     return new Date(this.created_at).toLocaleDateString("en-US", {
       month: "short",
       year: "numeric",

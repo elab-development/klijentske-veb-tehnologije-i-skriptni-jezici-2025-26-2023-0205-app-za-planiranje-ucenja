@@ -46,8 +46,8 @@ export function Header() {
                 </NavLink>
             </nav>
             <NavLink to="/profile" className={({ isActive }) => `headerProfile ${isActive ? "activeLink" : ""}`}>
-                {user?.displayName || "Profile"}
-                <img src={user?.profileImage || "/images/profile.png"} alt="" />
+                {user?.getDisplayName() || "Profile"}
+                <img src={user?.getProfileImage() || "/images/profile.png"} alt="" />
             </NavLink>
         </header>
     )

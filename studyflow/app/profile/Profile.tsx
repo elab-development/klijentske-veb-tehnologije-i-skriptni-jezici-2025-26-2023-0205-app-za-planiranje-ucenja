@@ -28,7 +28,7 @@ export function Profile() {
     if (!user) {
         return <main className="workPageMain">Loading profile...</main>;
     }
-    const profileImageSrc = user.profileImage;
+    const profileImageSrc = user.getProfileImage();
 
     function handleSignOut() {
         localStorage.clear();
@@ -55,7 +55,7 @@ export function Profile() {
                                 </button>
                             </div>
                             <div>
-                                <p className="fullName">{user.displayName}</p>
+                                <p className="fullName">{user.getDisplayName()}</p>
                                 <div className="profileDetails">
                                     <div className="profileDetailItem">
                                         {uni}
@@ -63,7 +63,7 @@ export function Profile() {
                                     </div>
                                     <div className="profileDetailItem">
                                         {calendar}
-                                        <p className="text-(--text-light) text-[14px] font-medium">Joined {user.joinedDate}</p>
+                                        <p className="text-(--text-light) text-[14px] font-medium">Joined {user.getJoinedDate()}</p>
                                     </div>
                                 </div>
                             </div>
