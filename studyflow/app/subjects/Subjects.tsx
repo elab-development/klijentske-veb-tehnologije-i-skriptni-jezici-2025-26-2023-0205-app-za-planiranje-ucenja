@@ -15,7 +15,7 @@ export function Subjects(){
     const limit = 5;
 
     const [statusFilter, setStatusFilter] = useState<SubjectStatus | "All">("All");
-    const [examPeriodFilter, setExamPeriodFilter] = useState<ExamPeriod>("Summer");
+    const [examPeriodFilter, setExamPeriodFilter] = useState<ExamPeriod | "">("");
     const [yearFilter, setYearFilter] = useState(new Date().getFullYear());
 
     const [modalMode, setModalMode] = useState<"add" | "edit" | null>(null);
@@ -35,7 +35,7 @@ export function Subjects(){
             const response = await getSubjects(page, limit,
                 {
                     status: statusFilter === "All" ? undefined : statusFilter,
-                    examPeriod: examPeriodFilter,
+                    examPeriod: examPeriodFilter || undefined,
                     year: yearFilter,
                 }
             );
@@ -96,12 +96,13 @@ export function Subjects(){
                             <select 
                                 value={examPeriodFilter}
                                 onChange={(event) => {
-                                    setExamPeriodFilter(event.target.value as ExamPeriod);
+                                    setExamPeriodFilter(event.target.value as ExamPeriod | "");
                                     setPage(1);
                                 }}
                             >
-                                <option>Summer</option>
-                                <option>Winter</option>
+                                <option value="">All</option>
+                                <option value="Summer">Summer</option>
+                                <option value="Winter">Winter</option>
                             </select>
                         </label>
 
